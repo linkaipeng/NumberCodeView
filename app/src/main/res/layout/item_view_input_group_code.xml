@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/number_root_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray">
+
+    <TextView
+        android:id="@+id/number_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:textColor="@color/text_color"
+        android:textSize="26sp"/>
+
+    <ImageView
+        android:id="@+id/number_delete_imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:src="@mipmap/ic_input_code_delete"/>
+
+</RelativeLayout>
