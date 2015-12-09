@@ -104,13 +104,13 @@ public class NumberCodeView extends RelativeLayout implements AdapterView.OnItem
             }
         }
         refreshNumberViews();
-        //6个码输完之后
+        //input 6 numbers complete
         if (mNumberStack.size() == NUMBER_COUNT) {
-            String code = "";
+            StringBuilder codeBuilder = new StringBuilder();
             for (int number : mNumberStack) {
-                code += number;
+                codeBuilder.append(number);
             }
-            mCallback.onResult(code);
+            mCallback.onResult(codeBuilder.toString());
         }
     }
 
