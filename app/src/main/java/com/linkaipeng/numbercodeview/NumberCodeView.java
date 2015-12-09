@@ -114,24 +114,6 @@ public class NumberCodeView extends RelativeLayout implements AdapterView.OnItem
         }
     }
 
-    /*public void setSucceedResult(){
-        mResultTextView.setVisibility(VISIBLE);
-        mResultTextView.setTextColor(getResources().getColor(R.color.holo_green_light));
-        mResultTextView.setText(R.string.group_check_group_code_success);
-    }
-
-    public void setErrorResult(){
-        mResultTextView.setVisibility(VISIBLE);
-        mResultTextView.setTextColor(getResources().getColor(R.color.holo_red_light));
-        mResultTextView.setText(R.string.group_check_group_code_failed);
-    }
-
-    public void setAlreadyExistResult(){
-        mResultTextView.setVisibility(VISIBLE);
-        mResultTextView.setTextColor(getResources().getColor(R.color.holo_red_light));
-        mResultTextView.setText(R.string.group_already_exist);
-    }*/
-
     public void restoreViews(){
         mNumberStack.clear();
         refreshNumberViews();
