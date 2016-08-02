@@ -2,11 +2,10 @@ package com.linkaipeng.example;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
-import com.linkaipeng.numbercodeview.NumberCodeView;
 import com.linkaipeng.numbercodeview.R;
+import com.lkp.numbercodeview.NumberCodeView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,8 +19,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView(){
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         mNumberCodeView = (NumberCodeView) findViewById(R.id.numberCodeView);
         mNumberCodeView.setNumberCodeCallback(new NumberCodeView.OnInputNumberCodeCallback() {
             @Override

@@ -60,7 +60,7 @@
         android:textSize="12dp"
         android:visibility="gone" />
 
-    <com.linkaipeng.numbercodeview.ExpandGridView
+    <com.lkp.numbercodeview.ExpandGridView
         android:id="@+id/numbers_gridView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
