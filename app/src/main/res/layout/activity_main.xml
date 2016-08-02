@@ -1,24 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:orientation="vertical">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:textColor="@color/dark_gray"
+        android:textSize="15sp"
+        android:text="Bottom sheet style, an activity with dialog style. Popup from bottom of screen."/>
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+    <Button
+        android:id="@+id/show_bottom_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:textAllCaps="false"
+        android:padding="10dp"
+        android:background="@drawable/bg_button"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:text="Bottom sheet style"/>
 
-    </android.support.design.widget.AppBarLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:textColor="@color/dark_gray"
+        android:textSize="15sp"
+        android:text="Normal, start to an activity which include the NumberCodeView."/>
 
-    <include layout="@layout/content_main" />
+    <Button
+        android:id="@+id/normal_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:textAllCaps="false"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_button"
+        android:textSize="16sp"
+        android:text="Normal"/>
 
-</android.support.design.widget.CoordinatorLayout>
+</LinearLayout>

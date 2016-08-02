@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_button_normal_color">#1488cf</color>
+    <color name="bg_button_press_color">#126294</color>
+</resources>
