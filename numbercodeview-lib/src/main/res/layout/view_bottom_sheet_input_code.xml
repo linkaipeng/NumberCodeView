@@ -5,10 +5,12 @@
     android:background="@color/black50transparent">
 
     <LinearLayout
+        android:id="@+id/bottom_number_code_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:layout_alignParentBottom="true"
+        android:visibility="gone"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -16,6 +18,7 @@
             android:layout_height="50dp">
 
             <ImageView
+                android:id="@+id/close_bottom_number_code_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
