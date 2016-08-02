@@ -81,6 +81,10 @@ public abstract class BaseNumberCodeView extends RelativeLayout implements Adapt
         mNumberViewList.add(mNumber6TextView);
     }
 
+    public void setIsPassword(boolean isPassword){
+        mIsPassword = isPassword;
+    }
+
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (position == NUMBER_BUTTON_CLEAR) {

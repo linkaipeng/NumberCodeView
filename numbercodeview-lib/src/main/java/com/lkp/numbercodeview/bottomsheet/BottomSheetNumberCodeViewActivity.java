@@ -19,9 +19,11 @@ public class BottomSheetNumberCodeViewActivity extends AppCompatActivity
 
     public static final int REQUEST_CODE_SHOW_BOTTOM_NUMBER_VIEW = 1001;
     public static final String KEY_DATA_NUMBER = "KeyDataNumber";
+    private static final String KEY_DATA_IS_PASSWORD = "KeyDataIsPassword";
 
-    public static void show(Activity activity){
+    public static void show(Activity activity, boolean isPassword){
         Intent intent = new Intent(activity, BottomSheetNumberCodeViewActivity.class);
+        intent.putExtra(KEY_DATA_IS_PASSWORD, isPassword);
         activity.startActivityForResult(intent, REQUEST_CODE_SHOW_BOTTOM_NUMBER_VIEW);
     }
 
@@ -35,9 +37,11 @@ public class BottomSheetNumberCodeViewActivity extends AppCompatActivity
     }
 
     private void initView(){
+        boolean isPassword = getIntent().getBooleanExtra(KEY_DATA_IS_PASSWORD, true);
         mNumberCodeView = (BottomSheetNumberCodeView) findViewById(R.id.bottom_sheet_number_code_view);
         mNumberCodeView.setNumberCodeCallback(this);
         mNumberCodeView.setOnHideBottomLayoutListener(this);
+        mNumberCodeView.setIsPassword(isPassword);
         mNumberCodeView.showNumberCodeLayout();
     }
 

@@ -16,8 +16,11 @@ import com.lkp.numbercodeview.normal.NumberCodeView;
  */
 public class NormalNumberCodeViewExampleActivity extends AppCompatActivity {
 
-    public static void start(Context context) {
+    private static final String KEY_DATA_IS_PASSWORD = "KeyDataIsPassword";
+
+    public static void start(Context context, boolean isPassword) {
         Intent starter = new Intent(context, NormalNumberCodeViewExampleActivity.class);
+        starter.putExtra(KEY_DATA_IS_PASSWORD, isPassword);
         context.startActivity(starter);
     }
 
@@ -34,7 +37,10 @@ public class NormalNumberCodeViewExampleActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("NormalNumberCodeView");
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+        boolean isPassword = getIntent().getBooleanExtra(KEY_DATA_IS_PASSWORD, true);
         mNumberCodeView = (NumberCodeView) findViewById(R.id.numberCodeView);
+        mNumberCodeView.setIsPassword(isPassword);
         mNumberCodeView.setNumberCodeCallback(new NumberCodeView.OnInputNumberCodeCallback() {
             @Override
             public void onResult(String code) {
