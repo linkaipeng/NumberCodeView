@@ -1,4 +1,4 @@
-package com.lkp.numbercodeview;
+package com.lkp.numbercodeview.bottomsheet;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import com.lkp.numbercodeview.BaseNumberCodeView;
+import com.lkp.numbercodeview.R;
 
 /**
  * Created by linkaipeng on 16/8/2.

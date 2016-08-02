@@ -1,10 +1,13 @@
-package com.lkp.numbercodeview;
+package com.lkp.numbercodeview.normal;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
+
+import com.lkp.numbercodeview.BaseNumberCodeView;
+import com.lkp.numbercodeview.R;
 
 /**
  * Created by linkaipeng on 2015/10/26.

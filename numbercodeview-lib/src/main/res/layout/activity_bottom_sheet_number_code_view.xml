@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.lkp.numbercodeview.BottomSheetNumberCodeView
+<com.lkp.numbercodeview.bottomsheet.BottomSheetNumberCodeView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/bottom_sheet_number_code_view"
     android:layout_width="match_parent"

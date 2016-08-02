@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.linkaipeng.numbercodeview.R;
-import com.lkp.numbercodeview.NumberCodeView;
+import com.lkp.numbercodeview.normal.NumberCodeView;
 
 /**
  * Created by linkaipeng on 16/8/2.

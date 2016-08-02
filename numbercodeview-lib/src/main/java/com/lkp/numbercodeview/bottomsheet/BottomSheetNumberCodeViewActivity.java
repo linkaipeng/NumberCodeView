@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.lkp.numbercodeview.BaseNumberCodeView;
-import com.lkp.numbercodeview.BottomSheetNumberCodeView;
 import com.lkp.numbercodeview.R;
 
 
