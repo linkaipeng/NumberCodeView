@@ -32,6 +32,7 @@ public class BottomSheetNumberCodeViewActivity extends AppCompatActivity
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(R.anim.push_bottom_to_top, 0);
         setContentView(R.layout.activity_bottom_sheet_number_code_view);
         initView();
     }
@@ -64,5 +65,11 @@ public class BottomSheetNumberCodeViewActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(0, R.anim.push_top_to_bottom);
     }
 }
