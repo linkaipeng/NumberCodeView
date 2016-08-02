@@ -1,51 +1,17 @@
 package com.lkp.numbercodeview;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
 
 /**
  * Created by linkaipeng on 2015/10/26.
  */
-public class NumberCodeView extends RelativeLayout implements AdapterView.OnItemClickListener {
+public class NumberCodeView extends BaseNumberCodeView {
 
-    private final static int NUMBER_BUTTON_DELETE = 11;
-    private final static int NUMBER_BUTTON_ZERO = 10;//0号按键
-    private final static int NUMBER_BUTTON_CLEAR = 9;//清除按键
-    private final static int NUMBER_COUNT = 6;
-
-    private final static String PASSWORD_NUMBER_SYMBOL = "●";
-
-    private Context mContext;
-    private ExpandGridView mNumbersGridView;
-
-    private boolean mIsPassword;
-
-    private TextView mNumber1TextView;
-    private TextView mNumber2TextView;
-    private TextView mNumber3TextView;
-    private TextView mNumber4TextView;
-    private TextView mNumber5TextView;
-    private TextView mNumber6TextView;
     private TextView mResultTextView;
-
-    private Stack<Integer> mNumberStack;
-    private List<TextView> mNumberViewList;
-
-    private OnInputNumberCodeCallback mCallback;
-
 
     public NumberCodeView(Context context) {
         super(context, null);
@@ -53,154 +19,17 @@ public class NumberCodeView extends RelativeLayout implements AdapterView.OnItem
 
     public NumberCodeView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        mContext = context;
-        mNumberStack = new Stack<>();
-        mNumberViewList = new ArrayList<>();
-        initView();
-
-        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.NumberCodeView);
-        mIsPassword = array.getBoolean(R.styleable.NumberCodeView_isPassword, false);
-    }
-
-    private void initView(){
-
-        View view = LayoutInflater.from(mContext).inflate(R.layout.view_input_group_code, null);
-        addView(view);
-        mNumbersGridView = (ExpandGridView) view.findViewById(R.id.numbers_gridView);
-        mNumbersGridView.setAdapter(new NumbersAdapter());
-        mNumbersGridView.setOnItemClickListener(this);
-        mResultTextView = (TextView) findViewById(R.id.input_code_result_textView);
-        mNumber1TextView = (TextView) findViewById(R.id.number_1_textView);
-        mNumber2TextView = (TextView) findViewById(R.id.number_2_textView);
-        mNumber3TextView = (TextView) findViewById(R.id.number_3_textView);
-        mNumber4TextView = (TextView) findViewById(R.id.number_4_textView);
-        mNumber5TextView = (TextView) findViewById(R.id.number_5_textView);
-        mNumber6TextView = (TextView) findViewById(R.id.number_6_textView);
-        mNumberViewList.add(mNumber1TextView);
-        mNumberViewList.add(mNumber2TextView);
-        mNumberViewList.add(mNumber3TextView);
-        mNumberViewList.add(mNumber4TextView);
-        mNumberViewList.add(mNumber5TextView);
-        mNumberViewList.add(mNumber6TextView);
     }
 
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        mResultTextView.setVisibility(GONE);
-        if (position == NUMBER_BUTTON_CLEAR) {
-            restoreViews();
-            return;
-        }
-        if (position == NUMBER_BUTTON_DELETE) {
-            if (mNumberStack.empty() || mNumberStack.size() > NUMBER_COUNT) {
-                return;
-            }
-            mNumberStack.pop();
-        } else {
-            if (position == NUMBER_BUTTON_ZERO) {
-                mNumberStack.push(0);
-            } else {
-                mNumberStack.push(++position);
-            }
-        }
-        refreshNumberViews();
-        //input 6 numbers complete
-        if (mNumberStack.size() == NUMBER_COUNT) {
-            StringBuilder codeBuilder = new StringBuilder();
-            for (int number : mNumberStack) {
-                codeBuilder.append(number);
-            }
-            mCallback.onResult(codeBuilder.toString());
-        }
+    protected View createView() {
+        return LayoutInflater.from(mContext).inflate(R.layout.view_input_group_code, null);
     }
 
-    public void restoreViews(){
-        mNumberStack.clear();
-        refreshNumberViews();
-        mResultTextView.setVisibility(GONE);
-    }
-
-    private void refreshNumberViews(){
-        for (int i = 0, size = mNumberViewList.size(); i < size; i++) {
-            int numSize = mNumberStack.size();
-            if (i < numSize) {
-                if (mIsPassword) {
-                    mNumberViewList.get(i).setText(PASSWORD_NUMBER_SYMBOL);
-                } else {
-                    mNumberViewList.get(i).setText(String.valueOf(mNumberStack.get(i)));
-                }
-
-            } else {
-                mNumberViewList.get(i).setText("");
-            }
+    @Override
+    protected void onResult(String code) {
+        if (mCallback != null) {
+            mCallback.onResult(code);
         }
-    }
-
-    public void setNumberCodeCallback(OnInputNumberCodeCallback callback){
-        this.mCallback = callback;
-    }
-
-
-    public interface OnInputNumberCodeCallback {
-        void onResult(String code);
-    }
-
-
-    private class NumbersAdapter extends BaseAdapter {
-
-        private String mNumbers = "123456789C0#";
-
-        @Override
-        public int getCount() {
-            return mNumbers.length();
-        }
-
-        @Override
-        public String getItem(int position) {
-            return String.valueOf(mNumbers.charAt(position));
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            ItemHolder itemHolder;
-            if (convertView == null) {
-                itemHolder = new ItemHolder();
-                convertView = LayoutInflater.from(mContext).inflate(R.layout.item_view_input_group_code, null);
-                itemHolder.mRootView = (RelativeLayout) convertView.findViewById(R.id.number_root_view);
-                itemHolder.mNumberTextView = (TextView) convertView.findViewById(R.id.number_textView);
-                itemHolder.mDeleteImageView = (ImageView) convertView.findViewById(R.id.number_delete_imageView);
-                convertView.setTag(itemHolder);
-            } else {
-                itemHolder = (ItemHolder) convertView.getTag();
-            }
-            String curNumber = getItem(position);
-            if ("C".equals(curNumber)) {
-                itemHolder.mDeleteImageView.setVisibility(GONE);
-                itemHolder.mNumberTextView.setVisibility(VISIBLE);
-                itemHolder.mNumberTextView.setText(curNumber);
-                itemHolder.mRootView.setBackgroundColor(getResources().getColor(R.color.gray));
-            } else if ("#".equals(curNumber)) {
-                itemHolder.mRootView.setBackgroundColor(getResources().getColor(R.color.gray));
-                itemHolder.mNumberTextView.setVisibility(GONE);
-                itemHolder.mDeleteImageView.setVisibility(VISIBLE);
-            } else {
-                itemHolder.mRootView.setBackgroundResource(R.drawable.list_selector);
-                itemHolder.mDeleteImageView.setVisibility(GONE);
-                itemHolder.mNumberTextView.setVisibility(VISIBLE);
-                itemHolder.mNumberTextView.setText(curNumber);
-            }
-            return convertView;
-        }
-    }
-
-    private static class ItemHolder{
-        RelativeLayout mRootView;
-        TextView mNumberTextView;
-        ImageView mDeleteImageView;
     }
 }
