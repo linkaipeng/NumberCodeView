@@ -3,10 +3,14 @@ A number input view which like input password in alipay or wechat pay.
 
 # Usage
 
+### Normal Style
+
+Normal, start to an activity which include the NumberCodeView.
+
 Add to your '.xml' file.
 
 ```
-<com.linkaipeng.numbercodeview.NumberCodeView
+<com.lkp.numbercodeview.normal.NumberCodeView
         android:id="@+id/numberCodeView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,10 +20,28 @@ Add to your '.xml' file.
 
 Use the `numbercodeview:isPassword` attribute.
 
+### BottomSheet Style
+
+Bottom sheet style, an activity with dialog style. Popup from bottom of screen.
+
+Call Bottom sheet style NumberCodeView with a single line code. Like this:
+
+```
+BottomSheetNumberCodeViewActivity.show(this, mIsPassword);
+```
+
+### `isPassword` Attribute
+
+If it is password, the number will be replaced with symbol ●
+
+
 # Screenshots
 
-![](https://github.com/linkaipeng/NumberCodeView/raw/master/screenshots/screenshot_number.png)
-![](https://github.com/linkaipeng/NumberCodeView/raw/master/screenshots/screenshot_password.png)
+![](https://github.com/linkaipeng/NumberCodeView/raw/master/screenshots/screenshot01.png)
+![](https://github.com/linkaipeng/NumberCodeView/raw/master/screenshots/screenshot02.png)
+![](https://github.com/linkaipeng/NumberCodeView/raw/master/screenshots/screenshot03.png)
+![](https://github.com/linkaipeng/NumberCodeView/raw/master/screenshots/screenshot04.png)
+![](https://github.com/linkaipeng/NumberCodeView/raw/master/screenshots/screenshot05.png)
 
 ## LICENSE
 
