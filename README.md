@@ -1,3 +1,5 @@
+####   [中文文档](https://github.com/linkaipeng/NumberCodeView/blob/master/README_zh.md)
+
 # NumberCodeView
 A number input view which like input password in alipay or wechat pay.
 
